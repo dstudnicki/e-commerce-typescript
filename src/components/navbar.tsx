@@ -8,11 +8,11 @@ import { UserNav } from "./user-nav";
 export default function Navbar({ className, ...props }: React.HTMLAttributes<HTMLElement>) {
     const [selectedLink, setSelectedLink] = useState<string | null>(null);
 
-    const linkClass = (href: string) => cn("text-md font-medium transition-colors", href === selectedLink ? "" : "text-muted-foreground hover:text-primary");
+    const linkClass = (href: string) => cn("text-lg font-medium transition-colors", href === selectedLink ? "" : "text-muted-foreground hover:text-primary");
 
     return (
-        <div className="flex justify-between md:p-16 lg:p-20">
-            <nav className={cn("flex w-full items-center justify-center space-x-4 lg:space-x-6", className)} {...props}>
+        <div className="hidden sm:flex justify-evenly px-4 md:px-8 lg:px-12 xl:px-24 py-20">
+            <nav className={cn("flex w-full items-center justify-start space-x-4 lg:space-x-6", className)} {...props}>
                 <Link href="/" legacyBehavior>
                     <a onClick={() => setSelectedLink("/")} className={linkClass("/")}>
                         Dashboard
@@ -34,7 +34,7 @@ export default function Navbar({ className, ...props }: React.HTMLAttributes<HTM
                     </a>
                 </Link>
             </nav>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-4">
                 <ModeToggle />
                 <UserNav />
             </div>
