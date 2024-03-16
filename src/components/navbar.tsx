@@ -1,14 +1,24 @@
 "use client";
 import { ModeToggle } from "./toggle";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { UserNav } from "./user-nav";
+import { usePathname } from "next/navigation";
 
 export default function Navbar({ className, ...props }: React.HTMLAttributes<HTMLElement>) {
+    const pathname = usePathname();
     const [selectedLink, setSelectedLink] = useState<string | null>(null);
 
     const linkClass = (href: string) => cn("text-lg font-medium transition-colors", href === selectedLink ? "" : "text-muted-foreground hover:text-primary");
+
+    useEffect(() => {
+        if (pathname === "/") {
+            setSelectedLink("/");
+        } else {
+            setSelectedLink(pathname);
+        }
+    }, [pathname]);
 
     return (
         <div className="hidden sm:flex justify-evenly px-4 lg:px-8 xl:px-24 py-20">
