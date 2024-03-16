@@ -11,7 +11,7 @@ export default function Navbar({ className, ...props }: React.HTMLAttributes<HTM
     const linkClass = (href: string) => cn("text-lg font-medium transition-colors", href === selectedLink ? "" : "text-muted-foreground hover:text-primary");
 
     return (
-        <div className="hidden sm:flex justify-evenly px-4 md:px-8 lg:px-12 xl:px-24 py-20">
+        <div className="hidden sm:flex justify-evenly px-4 lg:px-8 xl:px-24 py-20">
             <nav className={cn("flex w-full items-center justify-start space-x-4 lg:space-x-6", className)} {...props}>
                 <Link href="/" legacyBehavior>
                     <a onClick={() => setSelectedLink("/")} className={linkClass("/")}>
